@@ -1,0 +1,30 @@
+diff --git a/devel/diffutils/Makefile b/devel/diffutils/Makefile
+index 05cd360..8625faf 100644
+--- a/devel/diffutils/Makefile
++++ b/devel/diffutils/Makefile
+@@ -8,12 +8,12 @@
+ include $(TOPDIR)/rules.mk
+ 
+ PKG_NAME:=diffutils
+-PKG_VERSION:=3.0
++PKG_VERSION:=3.3
+ PKG_RELEASE:=3
+ 
+-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
++PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
+ PKG_SOURCE_URL:=@GNU/diffutils
+-PKG_MD5SUM:=684aaba1baab743a2a90e52162ff07da
++PKG_MD5SUM:=99180208ec2a82ce71f55b0d7389f1b3
+ 
+ PKG_INSTALL:=1
+ 
+@@ -35,6 +35,9 @@ endef
+ CONFIGURE_VARS += \
+ 	ac_cv_func_mempcpy=n \
+ 
++TARGET_CFLAGS += \
++	-std=gnu99
++
+ define Package/diffutils/install
+ 	$(INSTALL_DIR) $(1)/usr/bin
+ 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/{sdiff,diff3,diff,cmp} $(1)/usr/bin/
