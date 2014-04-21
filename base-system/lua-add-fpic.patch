@@ -1,0 +1,13 @@
+diff --git a/package/utils/lua/Makefile b/package/utils/lua/Makefile
+index e7e011a..76eb6ac 100644
+--- a/package/utils/lua/Makefile
++++ b/package/utils/lua/Makefile
+@@ -132,7 +132,7 @@ endif
+ 
+ define Host/Compile
+ 	$(MAKE) -C $(HOST_BUILD_DIR) \
+-		CC="$(HOSTCC) -std=gnu99" \
++		CC="$(HOSTCC) -std=gnu99 -fPIC" \
+ 		$(LUA_OS)
+ endef
+ 
