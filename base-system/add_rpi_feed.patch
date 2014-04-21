@@ -1,0 +1,12 @@
+diff --git a/feeds.conf.default b/feeds.conf.default
+index a4d9743..0bbb42c 100644
+--- a/feeds.conf.default
++++ b/feeds.conf.default
+@@ -2,6 +2,7 @@ src-git packages http://git.openwrt.org/packages.git
+ src-git luci http://git.openwrt.org/project/luci.git
+ src-git routing https://github.com/openwrt-routing/packages.git
+ src-git telephony http://git.openwrt.org/feed/telephony.git
++src-git raspberry https://github.com/rpi-openwrt/rpi-packages.git
+ #src-svn xwrt http://x-wrt.googlecode.com/svn/trunk/package
+ #src-svn phone svn://svn.openwrt.org/openwrt/feeds/phone
+ #src-svn efl svn://svn.openwrt.org/openwrt/feeds/efl
