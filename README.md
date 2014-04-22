@@ -18,11 +18,11 @@ Download contents of this repository to your trunk tree (so it's in trunk/patche
 Then go to your trunk directory.. Mine is /usr/src/openwrt/trunk<br/>
 And execute following commands:<br/>
 <pre>
-/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/openwrt-populatefs-fixed.patch
-/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/xorg-macros-upgrade.patch
-/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/udev-add-hostbuild.patch
-/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/lua-add-fpic.patch
-/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/add_rpi_feed.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/openwrt-populatefs-fixed.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/xorg-macros-upgrade.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/udev-add-hostbuild.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/lua-add-fpic.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/add_rpi_feed.patch
 </pre>
 
 Guide to patching against packages tree
@@ -33,10 +33,10 @@ Obtain atleast packages tree (check the top of the documentation for guidance wh
 And execute following commands:<br/>
 <pre>
 /usr/src/openwrt/trunk $ cd feeds/packages
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/diffutils.patch
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dialog-v2.patch
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dbus.patch
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/libxslt-update.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/diffutils.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dialog-v2.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dbus.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/libxslt-update.patch
 </pre>
 
 What next?
