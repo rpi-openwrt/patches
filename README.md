@@ -7,7 +7,7 @@ Patch patches from base-system folder against trunk and then patches from packag
 <pre>
 /usr/src/openwrt/trunk $ ./scripts/feeds update -a
 </pre>
-or<br/>
+This updates all package feeds (this doesn't yet enable the package tree), if you want to only update packages feed and no other feeds:<br/>
 <pre>
 /usr/src/openwrt/trunk $ ./script/feeds update -p packages
 </pre>
