@@ -4,20 +4,26 @@ Patches
 Patches against OpenWRT trunk and package feed to enable building properly for rpi target with rpi packages.
 
 Patch patches from base-system folder against trunk and then patches from packages folder against your local packages tree that you can obtain by commanding follwing in the trunk's root tree:<br/>
- ./scripts/feeds update -a<br/>
+<pre>
+/usr/src/openwrt/trunk $ ./scripts/feeds update -a
+</pre>
 or<br/>
- ./script/feeds update -p packages
+<pre>
+/usr/src/openwrt/trunk $ ./script/feeds update -p packages
+</pre>
  
 Guide to patching against openwrt trunk
 =======================================
 Download contents of this repository to your trunk tree (so it's in trunk/patches)<br/>
 Then go to your trunk directory.. Mine is /usr/src/openwrt/trunk<br/>
 And execute following commands:<br/>
- /usr/src/openwrt/trunk $ patch -p1 < patches/base-system/openwrt-populatefs-fixed.patch<br/>
- /usr/src/openwrt/trunk $ patch -p1 < patches/base-system/xorg-macros-upgrade.patch<br/>
- /usr/src/openwrt/trunk $ patch -p1 < patches/base-system/udev-add-hostbuild.patch<br/>
- /usr/src/openwrt/trunk $ patch -p1 < patches/base-system/lua-add-fpic.patch<br/>
- /usr/src/openwrt/trunk $ patch -p1 < patches/base-system/add_rpi_feed.patch<br/>
+<pre>
+/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/openwrt-populatefs-fixed.patch
+/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/xorg-macros-upgrade.patch
+/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/udev-add-hostbuild.patch
+/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/lua-add-fpic.patch
+/usr/src/openwrt/trunk $ patch -p1 < patches/base-system/add_rpi_feed.patch
+</pre>
 
 Guide to patching against packages tree
 =======================================
@@ -25,11 +31,13 @@ First patch your openwrt trunk, you should have now remaining patches in trunk/p
 Go to your trunk directory, mine is /usr/src/openwrt/trunk<br/>
 Obtain atleast packages tree (check the top of the documentation for guidance when needed..)<br/>
 And execute following commands:<br/>
- /usr/src/openwrt/trunk $ cd feeds/packages<br/>
- /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/diffutils.patch<br/>
- /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dialog-v2.patch<br/>
- /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dbus.patch<br/>
- /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/libxslt-update.patch<br/>
+<pre>
+/usr/src/openwrt/trunk $ cd feeds/packages
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/diffutils.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dialog-v2.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dbus.patch
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/libxslt-update.patch
+</pre>
 
 What next?
 ==========
