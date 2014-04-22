@@ -29,6 +29,7 @@ And execute following commands:<br/>
  /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/diffutils.patch<br/>
  /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dialog-v2.patch<br/>
  /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/dbus.patch<br/>
+ /usr/src/openwrt/trunk/feeds/packages $ patch -p1 < ../../patches/packages/libxslt-update.patch<br/>
 
 What next?
 ==========
