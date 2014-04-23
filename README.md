@@ -40,7 +40,6 @@ And execute following commands:<br/>
 /usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/diffutils.patch
 /usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dialog-v2.patch
 /usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dbus.patch
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/libxslt-update.patch
 </pre>
 
 What next?
