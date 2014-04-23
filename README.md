@@ -44,6 +44,11 @@ And execute following commands:<br/>
 
 What next?
 ==========
+Patches are no longer necessary, and you might as well remove them as they are already applied:
+<pre>
+/usr/src/openwrt/trunk $ rm -rf patches
+</pre>
+
 Follow guidance on the Readme of package rpi package repository for success:
 https://github.com/rpi-openwrt/rpi-packages
 
