@@ -14,7 +14,11 @@ This updates all package feeds (this doesn't yet enable the package tree), if yo
  
 Guide to patching against openwrt trunk
 =======================================
-Download contents of this repository to your trunk tree (so it's in trunk/patches)<br/>
+Download contents of this repository to your trunk tree (so it's in trunk/patches), you can do this by changing directory to your trunk directory and entering following command:<br/>
+<pre>
+/usr/src/openwrt/trunk $ git clone https://github.com/rpi-openwrt/patches.git
+</pre>
+
 Then go to your trunk directory.. Mine is /usr/src/openwrt/trunk<br/>
 And execute following commands:<br/>
 <pre>
