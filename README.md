@@ -29,17 +29,6 @@ And execute following commands:<br/>
 /usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/add_rpi_feed.patch
 </pre>
 
-Guide to patching against packages tree
-=======================================
-First patch your openwrt trunk, you should have now remaining patches in trunk/patches.<br/>
-Go to your trunk directory, mine is /usr/src/openwrt/trunk<br/>
-Obtain atleast packages tree (check the top of the documentation for guidance when needed..)<br/>
-And execute following commands:<br/>
-<pre>
-/usr/src/openwrt/trunk $ cd feeds/packages
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dbus-fixed.patch
-</pre>
-
 What next?
 ==========
 Patches are no longer necessary, and you might as well remove them as they are already applied:
