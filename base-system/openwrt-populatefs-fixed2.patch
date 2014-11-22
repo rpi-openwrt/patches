@@ -1,0 +1,89 @@
+diff --git a/include/image.mk b/include/image.mk
+index 12322bd..fe9bc79 100644
+--- a/include/image.mk
++++ b/include/image.mk
+@@ -212,12 +212,17 @@ endef
+ E2SIZE=$(shell echo $$(($(CONFIG_TARGET_ROOTFS_PARTSIZE)*1024*1024/$(CONFIG_TARGET_EXT4_BLOCKSIZE))))
+ 
+ define Image/mkfs/ext4
+-# generate an ext2 fs
+-	$(STAGING_DIR_HOST)/bin/genext2fs -U -B $(CONFIG_TARGET_EXT4_BLOCKSIZE) -b $(E2SIZE) -N $(CONFIG_TARGET_EXT4_MAXINODE) -d $(TARGET_DIR)/ $(KDIR)/root.ext4 -m $(CONFIG_TARGET_EXT4_RESERVED_PCT) $(MKFS_DEVTABLE_OPT)
++# generate a fs
++	dd if=/dev/zero of=$(KDIR)/root.ext4 seek=$(E2SIZE) count=0 bs=1k
+ # convert it to ext4
+-	$(STAGING_DIR_HOST)/bin/tune2fs $(if $(CONFIG_TARGET_EXT4_JOURNAL),-j) -O extents,uninit_bg,dir_index $(KDIR)/root.ext4
+-# fix it up
+-	$(STAGING_DIR_HOST)/bin/e2fsck -fy $(KDIR)/root.ext4
++	$(STAGING_DIR_HOST)/bin/mkfs.ext4 -F -E root_owner=0:0 -L OpenWrt -N $(CONFIG_TARGET_ROOTFS_MAXINODE) \
++	-O has_journal,ext_attr,resize_inode,dir_index,filetype,extent,flex_bg,sparse_super,large_file,uninit_bg,dir_nlink,extra_isize \
++	-m $(CONFIG_TARGET_ROOTFS_RESERVED_PCT) \
++	$(KDIR)/root.ext4
++# populate it
++	$(STAGING_DIR_HOST)/bin/populatefs -U -d $(TARGET_DIR) $(MKFS_DEVTABLE_OPT) $(KDIR)/root.ext4
++# check it
++	$(STAGING_DIR_HOST)/bin/fsck.ext4 -fy $(KDIR)/root.ext4
+ endef
+ 
+ define Image/mkfs/prepare/default
+diff --git a/tools/Makefile b/tools/Makefile
+index e387f44..2b082ea 100644
+--- a/tools/Makefile
++++ b/tools/Makefile
+@@ -25,7 +25,7 @@ endif
+ 
+ tools-$(BUILD_TOOLCHAIN) += gmp mpfr mpc libelf
+ tools-y += m4 libtool autoconf automake flex bison pkg-config sed mklibs
+-tools-y += sstrip ipkg-utils genext2fs e2fsprogs mtd-utils mkimage
++tools-y += sstrip ipkg-utils genext2fs e2fsprogs mtd-utils mkimage populatefs
+ tools-y += firmware-utils patch-image patch quilt yaffs2 flock padjffs2
+ tools-y += mm-macros xorg-macros xfce-macros missing-macros xz cmake scons bc
+ tools-y += findutils
+diff --git a/tools/populatefs/Makefile b/tools/populatefs/Makefile
+new file mode 100644
+index 0000000..efb0557
+--- /dev/null
++++ b/tools/populatefs/Makefile
+@@ -0,0 +1,43 @@
++#
++# Copyright (C) 2006 OpenWrt.org
++#
++# This is free software, licensed under the GNU General Public License v2.
++# See /LICENSE for more information.
++#
++
++include $(TOPDIR)/rules.mk
++
++PKG_NAME:=populatefs
++PKG_VERSION:=0.9
++
++PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
++PKG_SOURCE_URL:=git://github.com/oskarirauta/populatefs
++PKG_SOURCE_PROTO:=git
++PKG_SOURCE_VERSION:=9cb86b88d29601e73f9d78eeb3430a0a32b33057
++PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++PKG_CAT:=zcat
++
++include $(INCLUDE_DIR)/host-build.mk
++
++define Host/Configure
++	true
++endef
++
++define Host/Compile
++	CC=$(HOSTCC) \
++	CFLAGS=" -fPIC -Wall $(HOST_CFLAGS)" \
++	LDFLAGS=$(HOST_LDFLAGS) \
++	EXTRAVERSION="-openwrt" \
++	$(MAKE) -C $(HOST_BUILD_DIR) \
++		all
++endef
++
++define Host/Install
++	install -m0755 $(HOST_BUILD_DIR)/src/populatefs $(STAGING_DIR_HOST)/bin/
++endef
++
++define Host/Clean
++	rm -f $(STAGING_DIR_HOST)/bin/genext2fs
++endef
++
++$(eval $(call HostBuild))
