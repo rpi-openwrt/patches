@@ -37,7 +37,6 @@ Obtain atleast packages tree (check the top of the documentation for guidance wh
 And execute following commands:<br/>
 <pre>
 /usr/src/openwrt/trunk $ cd feeds/packages
-/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dialog-v2.patch
 /usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/dbus-fixed.patch
 </pre>
 
