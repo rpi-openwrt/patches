@@ -40,7 +40,7 @@ index e387f44..2b082ea 100644
  tools-y += findutils
 diff --git a/tools/populatefs/Makefile b/tools/populatefs/Makefile
 new file mode 100644
-index 0000000..efb0557
+index 0000000..cdfe3c3
 --- /dev/null
 +++ b/tools/populatefs/Makefile
 @@ -0,0 +1,43 @@
@@ -71,8 +71,8 @@ index 0000000..efb0557
 +
 +define Host/Compile
 +	CC=$(HOSTCC) \
-+	CFLAGS=" -fPIC -Wall $(HOST_CFLAGS)" \
-+	LDFLAGS=$(HOST_LDFLAGS) \
++	CFLAGS="-fPIC -Wall $(HOST_CFLAGS)" \
++	LDFLAGS="$(HOST_LDFLAGS)" \
 +	EXTRAVERSION="-openwrt" \
 +	$(MAKE) -C $(HOST_BUILD_DIR) \
 +		all
