@@ -9,12 +9,12 @@ index 12322bd..fe9bc79 100644
 -# generate an ext2 fs
 -	$(STAGING_DIR_HOST)/bin/genext2fs -U -B $(CONFIG_TARGET_EXT4_BLOCKSIZE) -b $(E2SIZE) -N $(CONFIG_TARGET_EXT4_MAXINODE) -d $(TARGET_DIR)/ $(KDIR)/root.ext4 -m $(CONFIG_TARGET_EXT4_RESERVED_PCT) $(MKFS_DEVTABLE_OPT)
 +# generate a fs
-+	dd if=/dev/zero of=$(KDIR)/root.ext4 seek=$(E2SIZE) count=0 bs=1k
++	dd if=/dev/zero of=$(KDIR)/root.ext4 seek=$(E2SIZE) count=0 bs=$(CONFIG_TARGET_EXT4_BLOCKSIZE)
  # convert it to ext4
 -	$(STAGING_DIR_HOST)/bin/tune2fs $(if $(CONFIG_TARGET_EXT4_JOURNAL),-j) -O extents,uninit_bg,dir_index $(KDIR)/root.ext4
 -# fix it up
 -	$(STAGING_DIR_HOST)/bin/e2fsck -fy $(KDIR)/root.ext4
-+	$(STAGING_DIR_HOST)/bin/mkfs.ext4 -F -E root_owner=0:0 -L OpenWrt -N $(CONFIG_TARGET_ROOTFS_MAXINODE) \
++	$(STAGING_DIR_HOST)/bin/mkfs.ext4 -F -E root_owner=0:0 -L OpenWrt -N $(CONFIG_TARGET_EXT4_MAXINODE) \
 +	-O has_journal,ext_attr,resize_inode,dir_index,filetype,extent,flex_bg,sparse_super,large_file,uninit_bg,dir_nlink,extra_isize \
 +	-m $(CONFIG_TARGET_EXT4_RESERVED_PCT) \
 +	$(KDIR)/root.ext4
