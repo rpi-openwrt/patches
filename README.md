@@ -22,7 +22,7 @@ Download contents of this repository to your trunk tree (so it's in trunk/patche
 Then go to your trunk directory.. Mine is /usr/src/openwrt/trunk<br/>
 And execute following commands:<br/>
 <pre>
-/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/openwrt-populatefs-fixed4.patch
+/usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/openwrt-populatefs-fixed-v5.patch
 /usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/xorg-macros-upgrade.patch
 /usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/udev-add-hostbuild.patch
 /usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/lua-add-fpic.patch
