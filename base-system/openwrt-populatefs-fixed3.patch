@@ -16,7 +16,7 @@ index 12322bd..fe9bc79 100644
 -	$(STAGING_DIR_HOST)/bin/e2fsck -fy $(KDIR)/root.ext4
 +	$(STAGING_DIR_HOST)/bin/mkfs.ext4 -F -E root_owner=0:0 -L OpenWrt -N $(CONFIG_TARGET_ROOTFS_MAXINODE) \
 +	-O has_journal,ext_attr,resize_inode,dir_index,filetype,extent,flex_bg,sparse_super,large_file,uninit_bg,dir_nlink,extra_isize \
-+	-m $(CONFIG_TARGET_ROOTFS_RESERVED_PCT) \
++	-m $(CONFIG_TARGET_EXT4_RESERVED_PCT) \
 +	$(KDIR)/root.ext4
 +# populate it
 +	$(STAGING_DIR_HOST)/bin/populatefs -U -d $(TARGET_DIR) $(MKFS_DEVTABLE_OPT) $(KDIR)/root.ext4
