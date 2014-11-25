@@ -29,6 +29,16 @@ And execute following commands:<br/>
 /usr/src/openwrt/trunk $ patch -p1 &lt; patches/base-system/add_rpi_feed.patch
 </pre>
 
+Patch packages
+==============
+Patch libfreetype2.patch against packages tree. First fetch it..
+<pre>
+/usr/src/openwrt/trunk $ ./scripts/feeds update packages
+/usr/src/openwrt/trunk $ ./scripts/feeds install packages
+/usr/src/openwrt/trunk $ cd feeds/packages
+/usr/src/openwrt/trunk/feeds/packages $ patch -p1 &lt; ../../patches/packages/libfreetype2.patch
+</pre>
+
 What next?
 ==========
 Patches are no longer necessary, and you might as well remove them as they are already applied:
